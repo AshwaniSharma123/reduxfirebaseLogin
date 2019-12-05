@@ -13,10 +13,54 @@ class _WelcomeState extends State<Welcome> {
         title: Text('redux-login'),
       ),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
-          Center(
-            child: Text('welcome to flutter'),
-          )
+          SizedBox(height: 50,),
+          TextFormField(
+          decoration: InputDecoration(
+            hintText: "Enter Name",
+          ),
+          // onSaved: (val){
+          //   name = val;
+          // },
+          maxLength: 32,
+        ),
+        TextFormField(
+          decoration: InputDecoration(
+            hintText: "Message",
+          ),
+          // onSaved: (val){
+          //     message = val;
+          // },
+         // validator: validateMessage,
+          maxLines: 5,
+          maxLength: 256,
+        ),
+        SizedBox(height: 20,),
+         Row(
+         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+         children: <Widget>[
+           RaisedButton(
+             elevation: 10.0,
+             splashColor: Colors.red,
+              onPressed: (){},
+             child:Text('Send') ,
+           ),
+           RaisedButton(
+             elevation: 20.0,
+             splashColor: Colors.green,
+             onPressed: (){
+              //  Toast.show("Data List", context, duration: Toast.LENGTH_LONG, gravity:  Toast.BOTTOM);
+              //  Navigator.push(context, MaterialPageRoute(builder: (context) => ShoData(id)));
+             },
+             child:Text('Show Data'),
+           ),
+         ],
+       ),
+      //  SizedBox(height: 80,),
+          // Center(
+          //   child: Text('Login Successful'),
+          // ),
         ],
       ),
     );

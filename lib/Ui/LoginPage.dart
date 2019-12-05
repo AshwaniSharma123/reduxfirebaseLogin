@@ -1,20 +1,12 @@
 
-
-import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:redux/redux.dart';
-import 'package:redux_firebase_login/Ui/WelcomeScreen.dart';
 import 'package:redux_firebase_login/Utils/Routes.dart';
 import 'package:redux_firebase_login/models/LoginModel.dart';
-import 'package:redux_firebase_login/models/signup_models.dart';
 import 'package:redux_firebase_login/redux/Actions/LoginActions.dart';
-import 'package:redux_firebase_login/redux/Actions/signup_actions.dart';
 import 'package:redux_firebase_login/redux/Appstate.dart';
-import 'package:toast/toast.dart';
-
 
 
 class Login extends StatefulWidget {
@@ -23,19 +15,20 @@ class Login extends StatefulWidget {
 }
 class _LoginState extends State<Login> {
 
-  
   final _passwordController = TextEditingController();
   final _emailController = TextEditingController();
   final GoogleSignIn googleSignIn = GoogleSignIn();
   //final FirebaseAuth _auth = FirebaseAuth.instance;
   Store<AppState> store;
   
-  
-  
-
   @override
   void initState() {
     super.initState();
+  }
+  @override
+  void dispose(){
+    
+    super.dispose();
   }
 
 
@@ -134,7 +127,6 @@ class _LoginState extends State<Login> {
                                 ),),
                               splashColor: Colors.green,
                               onPressed: () {
-
                 //  SignUpModel _model =  SignUpModel(_emailController.text.toString(), _passwordController.text.toString());
                 // store.dispatch(SignUpAction(_model));
                 Keys.navKey.currentState.pushNamed(Routes.signUpScreen,);
@@ -161,6 +153,7 @@ class _LoginState extends State<Login> {
 }
 
 class _LoginModel {
+
   final bool isLoader;
   final Store<AppState> store;
   _LoginModel(this.isLoader, this.store);

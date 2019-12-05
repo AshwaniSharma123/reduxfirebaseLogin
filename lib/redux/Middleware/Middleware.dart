@@ -1,18 +1,14 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
 import 'package:redux/redux.dart';
-import 'package:redux_firebase_login/Ui/LoginPage.dart';
-import 'package:redux_firebase_login/Ui/WelcomeScreen.dart';
 import 'package:redux_firebase_login/Utils/Routes.dart';
 import 'package:redux_firebase_login/redux/Actions/LoginActions.dart';
 import 'package:redux_firebase_login/redux/Actions/signup_actions.dart';
 import 'package:redux_firebase_login/redux/Appstate.dart';
 import 'package:redux_thunk/redux_thunk.dart';
 
-
 final FirebaseAuth _auth = FirebaseAuth.instance;
 
-List<Middleware<AppState>> createAppMiddleware() {
+List<Middleware<AppState>> createAppMiddleware(){
   return <Middleware<AppState>>[
     thunkMiddleware,
     TypedMiddleware<AppState, LoginSignInAction>(
@@ -21,8 +17,6 @@ List<Middleware<AppState>> createAppMiddleware() {
         _signUpAction),
   ];
 }
-
-
 
  // <<<<<<<<<<<<<<<<<<<<<<<<<<<< Login FirebSe >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> // 
 
@@ -41,8 +35,8 @@ void _signInAction(Store<AppState> store, LoginSignInAction action,
                 else {
                store.dispatch(LoginLoaderAction(true));
                 }
-                 });
-                }
+               });
+              }
     
 // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<< SignUp firebase >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> //
 
@@ -54,3 +48,5 @@ void _signUpAction(Store<AppState> store, SignUpAction action,
       password: action.signUpModel.password,
     )).user;  
     }
+
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<><><><><>><><><><><><><><><><><><>>>>>>>>>>>>>>>>>>>>>>>>>>>>>//

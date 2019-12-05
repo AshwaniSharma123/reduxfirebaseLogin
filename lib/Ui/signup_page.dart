@@ -1,18 +1,12 @@
 
-import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:redux/redux.dart';
-import 'package:redux_firebase_login/Ui/WelcomeScreen.dart';
-import 'package:redux_firebase_login/Utils/Routes.dart';
-import 'package:redux_firebase_login/models/LoginModel.dart';
 import 'package:redux_firebase_login/models/signup_models.dart';
-import 'package:redux_firebase_login/redux/Actions/LoginActions.dart';
 import 'package:redux_firebase_login/redux/Actions/signup_actions.dart';
 import 'package:redux_firebase_login/redux/Appstate.dart';
-import 'package:toast/toast.dart';
+
 
 
 
@@ -45,18 +39,20 @@ class _SignUpState extends State<SignUp> {
           this.store = store;
           return _SignUpModel.create(store, context);
         },
-        builder: (BuildContext context, _SignUpModel reducerSetup) {
         
+    builder: (BuildContext context, _SignUpModel reducerSetup) {
+
     return Scaffold(
-              appBar: AppBar(
-                title: Text('Redux login'),
+           appBar: AppBar(
+           backgroundColor: Colors.grey,
+           title: Text('Redux-Firebase-login'),
               ),
-              body: SingleChildScrollView(
+           body: SingleChildScrollView(
                 child: Container(
                   child:
                  Column(
                     children: <Widget>[
-                      SizedBox(height: 40,),
+                      SizedBox(height: 20,),
                       Padding(
                         padding: EdgeInsets.all(10.0),
                         child:
