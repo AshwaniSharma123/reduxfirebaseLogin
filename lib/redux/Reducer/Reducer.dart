@@ -5,5 +5,8 @@ AppState appReducer(AppState state, action) {
   return AppState(
     loginModel: loginReducer(state.loginModel, action),
      loginLoader: loginLoaderReducer(state.loginLoader,action),
+     signUpModel: signUpReducer(state.signUpModel,action),
+     signUploader: signUpLoaderReducer(state.signUploader,action),
+    
   );
 }

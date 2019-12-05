@@ -5,6 +5,7 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
 import 'package:redux_firebase_login/Ui/LoginPage.dart';
 import 'package:redux_firebase_login/Ui/WelcomeScreen.dart';
+import 'package:redux_firebase_login/Ui/signup_page.dart';
 import 'package:redux_firebase_login/Utils/Routes.dart';
 import 'package:redux_firebase_login/redux/Appstate.dart';
 
@@ -30,6 +31,9 @@ class Application extends StatelessWidget {
           routes: <String, WidgetBuilder>{
             Routes.welcomeScreen: (context) {
               return Welcome();
+            },
+            Routes.signUpScreen: (context) {
+              return SignUp();
             },
           },
         )

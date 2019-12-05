@@ -1,5 +1,4 @@
 
-
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
@@ -17,17 +16,17 @@ import 'package:toast/toast.dart';
 
 
 
-class Login extends StatefulWidget {
+class SignUp extends StatefulWidget {
   @override
-  _LoginState createState() => _LoginState();
+  _SignUpState createState() => _SignUpState();
 }
-class _LoginState extends State<Login> {
+class _SignUpState extends State<SignUp> {
 
   
   final _passwordController = TextEditingController();
   final _emailController = TextEditingController();
   final GoogleSignIn googleSignIn = GoogleSignIn();
-  //final FirebaseAuth _auth = FirebaseAuth.instance;
+  // final FirebaseAuth _auth = FirebaseAuth.instance;
   Store<AppState> store;
   
   
@@ -41,20 +40,14 @@ class _LoginState extends State<Login> {
 
   @override
   Widget build(BuildContext context) {
-    return StoreConnector<AppState, _LoginModel>(
+    return StoreConnector<AppState, _SignUpModel>(
         converter: (Store<AppState> store) {
           this.store = store;
-          return _LoginModel.create(store, context);
+          return _SignUpModel.create(store, context);
         },
-        builder: (BuildContext context, _LoginModel reducerSetup) {
+        builder: (BuildContext context, _SignUpModel reducerSetup) {
         
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'fire Auth',
-      theme: ThemeData(
-        primarySwatch: Colors.grey,
-            ),
-      home: Scaffold(
+    return Scaffold(
               appBar: AppBar(
                 title: Text('Redux login'),
               ),
@@ -72,7 +65,7 @@ class _LoginState extends State<Login> {
                           cursorColor: Colors.black,
                           decoration: InputDecoration(
                             //   hintText: 'User Name',
-                            labelText: "user",
+                            labelText: "create email ",
                             prefixIcon: Icon(
                               Icons.person,
                               color: Colors.grey,
@@ -90,7 +83,7 @@ class _LoginState extends State<Login> {
                            controller: _passwordController,
                           cursorColor: Colors.black,
                           decoration: InputDecoration(
-                            labelText: "password",
+                            labelText: "create password",
                             prefixIcon: Icon(
                               Icons.lock,
                               color: Colors.grey,
@@ -107,27 +100,11 @@ class _LoginState extends State<Login> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: <Widget>[
+                         
+                         
                           RaisedButton(
                               elevation: 5.0,
-                              child: Text('Sign in',
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 20.0,
-                                ),
-                              ),
-                              splashColor: Colors.pinkAccent,
-                              onPressed: () {
-          
-                     LoginModel _model =  LoginModel(_emailController.text.toString(),
-                           _passwordController.text.toString());
-                          store.dispatch(LoginSignInAction(_model));
-                                  // Navigator.push(context, MaterialPageRoute(builder: (context) => Welcome()));   
-                              }
-                          ),
-                          SizedBox(height: 40),
-                          RaisedButton(
-                              elevation: 5.0,
-                              child: Text('Register Now',
+                              child: Text('Submit',
                                 style: TextStyle(
                                   color: Colors.black,
                                   fontSize: 20.0,
@@ -135,9 +112,9 @@ class _LoginState extends State<Login> {
                               splashColor: Colors.green,
                               onPressed: () {
 
-                //  SignUpModel _model =  SignUpModel(_emailController.text.toString(), _passwordController.text.toString());
-                // store.dispatch(SignUpAction(_model));
-                Keys.navKey.currentState.pushNamed(Routes.signUpScreen,);
+                 SignUpModel _model =  SignUpModel(_emailController.text.toString(), _passwordController.text.toString());
+                store.dispatch(SignUpAction(_model));
+                //Keys.navKey.currentState.pushNamed(Routes.welcomeScreen,);
                                // registerUser();
                               }
                           ),
@@ -147,8 +124,8 @@ class _LoginState extends State<Login> {
                   ),
                 ),
               ),
-            ),
-           );
+            );
+           
          }
        );
       }
@@ -160,14 +137,14 @@ class _LoginState extends State<Login> {
   // }
 }
 
-class _LoginModel {
+class _SignUpModel {
   final bool isLoader;
   final Store<AppState> store;
-  _LoginModel(this.isLoader, this.store);
+  _SignUpModel(this.isLoader, this.store);
 
-  factory _LoginModel.create(Store<AppState> store, BuildContext context) {
-    return _LoginModel(
-        store.state.loginLoader, store);
+  factory _SignUpModel.create(Store<AppState> store, BuildContext context) {
+    return _SignUpModel(
+        store.state.signUploader, store);
   }
 }
 

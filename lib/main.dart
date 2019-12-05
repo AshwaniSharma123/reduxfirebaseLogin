@@ -12,6 +12,7 @@ void main() async {
       initialState: AppState(
          
           loginLoader: false, loginModel: null,
+          signUploader: false, signUpModel: null,
         ), //initialize value if you want!!
       middleware: createAppMiddleware());
 
